@@ -16,6 +16,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# 把extra_apps和apps标记为sources root
+import sys
+sys.path.insert(0,BASE_DIR)
+sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0,os.path.join(BASE_DIR, 'extra_apps'))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -84,6 +91,7 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'default-character-set':'utf8',
+        # 后面可能会实现第三方登录，需要修改
     }
 }
 
