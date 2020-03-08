@@ -34,6 +34,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#重载系统的用户，让UserProfiles生效
+AUTH_USER_MODEL = 'users.UserProfiles'
+
 
 # Application definition
 
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'users',
     'rest_framework'
 ]
 
