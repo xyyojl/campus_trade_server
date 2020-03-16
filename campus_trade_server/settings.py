@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'users',
-    'rest_framework'
+    'rest_framework',
+    # drf 的 token
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,12 @@ STATIC_URL = '/static/'
 
 # 设置media的保存路径
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    )
+}
