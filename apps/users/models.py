@@ -59,7 +59,17 @@ class UserProfiles(AbstractBaseUser, PermissionsMixin):
 
 
 
-
-
 # 验证码 待完善
+class VerifyCode(models.Model):
+    """ 验证码 """
+    code = models.CharField("验证码",max_length=10)
+    mobile = models.CharField("电话",max_length=11)
+    add_time = models.DateTimeField("添加时间",default=datetime.now)
 
+    class Meta:
+        db_table = "tb_users_verifycode"
+        verbose_name = "短信验证"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.code
