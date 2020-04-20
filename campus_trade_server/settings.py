@@ -54,6 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', # drf 框架注册
+    # xadmin
+    'xadmin',
+    'crispy_forms',
+    'reversion',
+    # 自身
     'home',
     'users',
     

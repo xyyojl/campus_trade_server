@@ -156,8 +156,6 @@ class Banner(models.Model):
     class Meta:
         db_table='banner'
         ordering = ['-priority']
-    def __str__(self):
-        return self.name
 
 # 考虑中
 """ 轮播图模型、热搜排行、trade 交易 如何解决商品支付
