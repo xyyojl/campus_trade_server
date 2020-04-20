@@ -1,6 +1,28 @@
 from rest_framework import serializers
-from .models import BigGoodsTag,SmallGoodsTag,Goods
-from rest_framework.pagination import PageNumberPagination
+from .models import Banner
+
+
+
+class BannerSerializer(serializers.ModelSerializer):
+    """ 轮播图序列化器 """
+    class Meta:
+        model = Banner
+        fields = ('id','image_url','priority','link_to')
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from .models import BigGoodsTag,SmallGoodsTag,Goods
+# from rest_framework.pagination import PageNumberPagination
 
 """ class BigTagsSerilizer(serializers.ModelSerializer):
 

@@ -144,6 +144,21 @@ class Comment(models.Model):
         ordering = ['-create_time', ]
 
 
+
+'''轮播图模型'''
+class Banner(models.Model):
+    image_url = models.URLField()
+    priority = models.IntegerField()
+    link_to = models.URLField()
+    create_date = models.DateTimeField(auto_now_add=True)
+    is_delete = models.BooleanField(default=False)
+
+    class Meta:
+        db_table='banner'
+        ordering = ['-priority']
+    def __str__(self):
+        return self.name
+
 # 考虑中
 """ 轮播图模型、热搜排行、trade 交易 如何解决商品支付
 用户收藏、用户收货、用户留言 """

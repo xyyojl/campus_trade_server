@@ -53,9 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', # drf 框架注册
     'home',
     'users',
-    'rest_framework',
+    
     # drf 的 token
     'rest_framework.authtoken',
     'corsheaders', # 解决跨域问题

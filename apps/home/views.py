@@ -1,3 +1,34 @@
+# from django.db.models import Q  # 对对象进行复杂查询，并支持&（and）,|（or），~（not）操作符
+from rest_framework.generics import ListAPIView
+from .models import Banner
+from .serializers import BannerSerializer
+
+class BannerInfoListAPIView(ListAPIView):
+    """ 轮播图列表 """
+    queryset = Banner.objects.all() # Banner 模型类
+    serializer_class = BannerSerializer 
+
+
+
+
+
+
+""" @require_GET   # /home/banner/list/
+# @method_decorator(cache_page(timeout=120,cache='page_cache'))
+def banner_list(request):
+    '''返回轮播图列表'''
+    banners=Banner.objects.filter(is_delete = False)
+    serializer=BannerSerializer(banners,many=True)
+    return json_status.result(data = {'banners':serializer.data}) """
+
+
+
+
+
+
+
+
+
 """ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import mixins

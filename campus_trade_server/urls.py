@@ -33,6 +33,8 @@ router = DefaultRouter() """
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 注册总路由
+    path('',include('home.urls'))
     # drf文档，title自定义
     # path('docs',include_docs_urls(title='校园二手交易平台')),
     # path('api-auth/',include('rest_framework.urls')),
