@@ -19,13 +19,13 @@ from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework.documentation import include_docs_urls
 
-from home.views import GoodsListViewSet, BigCategoryViewSet
+""" from home.views import GoodsListViewSet, BigCategoryViewSet
 from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
+router = DefaultRouter() """
 
 # 配置 goods 的 url
-router.register(r'goods', GoodsListViewSet)
+# router.register(r'goods', GoodsListViewSet)
 
 # 配置Category的url
 # router.register(r'categorys', BigCategoryViewSet, base_name="categorys")
@@ -34,16 +34,16 @@ router.register(r'goods', GoodsListViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     # drf文档，title自定义
-    path('docs',include_docs_urls(title='校园二手交易平台')),
-    path('api-auth/',include('rest_framework.urls')),
+    # path('docs',include_docs_urls(title='校园二手交易平台')),
+    # path('api-auth/',include('rest_framework.urls')),
     # 施工中
     #商品列表页
     # path('goods/',GoodsListView.as_view(),name='goods-list'),
-    path('api/v1/',include(router.urls)),
-    path('test/',include('home.urls')),
+    # path('api/v1/',include(router.urls)),
+    # path('test/',include('home.urls')),
     # path('api/v1/',include('home.urls')),
     # token
-    path('api-token-auth/', views.obtain_auth_token),
+    # path('api-token-auth/', views.obtain_auth_token),
     # jwt的token认证接口
-    path('login/', obtain_jwt_token )
+    # path('login/', obtain_jwt_token )
 ]

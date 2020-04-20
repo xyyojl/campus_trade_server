@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import BigGoodsTag,SmallGoodsTag,Goods
 from rest_framework.pagination import PageNumberPagination
 
-class BigTagsSerilizer(serializers.ModelSerializer):
+""" class BigTagsSerilizer(serializers.ModelSerializer):
 
     class Meta:
         model = BigGoodsTag
@@ -14,7 +14,7 @@ class SmallTagsSerilizer(serializers.ModelSerializer):
 
     class Meta:
         model = SmallGoodsTag
-        fields = ('id','name','big_tag','is_delete')
+        fields = ('id','name','big_tag','is_delete') """
 
 # Serializer实现商品列表页
 """ class GoodsSerializer(serializers.Serializer):
@@ -29,11 +29,11 @@ class SmallTagsSerilizer(serializers.ModelSerializer):
 
 # 商品列表页
 # 通过 serializers 的嵌套功能可以详细的显示分类的信息
-class GoodsSerializer(serializers.ModelSerializer):
+""" class GoodsSerializer(serializers.ModelSerializer):
     # 差一个外键 author
     small_tag = SmallTagsSerilizer()
     class Meta:
         model = Goods
-        fields = '__all__'
+        fields = '__all__' """
 
 
