@@ -30,6 +30,12 @@ class SmallTagsDetail(generics.RetrieveAPIView):
     serializer_class = SmallTagsSerilizer
 
 
+class BigCategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    """ 大分类 """
+    queryset = BigGoodsTag.objects.all()
+    serializer_class = BigTagsSerilizer
+
+
 # 施工中 test
 
 # 商品列表自定义分页

@@ -32,7 +32,13 @@ SECRET_KEY = '*9k9)*dk5n!y@#h0q44p$*#(6e2!=z@z(1hp!9*2_h6n5z1=4p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+# CORS组的配置信息
+CORS_ORIGIN_WHITELIST = (
+    # 'www.luffycity.cn:8080'
+)
+CORS_ALLOW_CREDENTIALS = True  # 允许ajax跨域请求时携带cookie
 
 #重载系统的用户，让UserProfiles生效
 AUTH_USER_MODEL = 'users.UserProfiles'
@@ -51,10 +57,12 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     # drf 的 token
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'corsheaders', # 解决跨域问题
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

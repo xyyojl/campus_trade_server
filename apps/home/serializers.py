@@ -22,10 +22,10 @@ class SmallTagsSerilizer(serializers.ModelSerializer):
     clicks = serializers.IntegerField(default=0)
     desc = serializers.CharField(max_length=200) """
 
+
+
+
 # Goods 涉及到的外键 small_tag author
-
-
-
 
 # 商品列表页
 # 通过 serializers 的嵌套功能可以详细的显示分类的信息
