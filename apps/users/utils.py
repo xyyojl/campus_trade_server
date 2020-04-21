@@ -8,12 +8,12 @@ def get_user_by_account(account):
     try:
         # if re.match('^1[3-9]\d{9}$', account):
         #     # 手机号
-        #     user = User.objects.get(mobile=account)
+        #     user = User.objects.get(telephone=account)
         # else:
         #     # 用户名
         #     user = User.objects.get(username=account)
 
-        user = User.objects.get(Q(mobile=account) | Q(username=account))
+        user = User.objects.get(Q(telephone=account) | Q(username=account))
 
     except User.DoesNotExist:
         user = None
