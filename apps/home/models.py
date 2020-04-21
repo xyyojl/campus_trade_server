@@ -147,11 +147,11 @@ class Comment(models.Model):
 
 '''轮播图模型'''
 class Banner(models.Model):
-    image_url = models.URLField()
-    priority = models.IntegerField()
-    link_to = models.URLField()
-    create_date = models.DateTimeField(auto_now_add=True)
-    is_delete = models.BooleanField(default=False)
+    image_url = models.URLField(verbose_name='轮播图URL')
+    priority = models.IntegerField(verbose_name='显示顺序')
+    link_to = models.URLField(verbose_name='跳转地址')
+    create_date = models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
+    is_delete = models.BooleanField(default=False,verbose_name='是否删除')
 
     class Meta:
         db_table='banner'

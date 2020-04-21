@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken import views
-from rest_framework_jwt.views import obtain_jwt_token
+# from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework.documentation import include_docs_urls
 
 # 添加xadmin的路由信息
@@ -43,7 +43,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # 注册总路由
     path('',include('home.urls')),
-    path(r'xadmin/', xadmin.site.urls),
+    path('xadmin/', xadmin.site.urls),
+    path('users/',include('users.urls')),  # include 的值必须是 模块名.urls 格式,字符串中间只能出现一个圆点
     # drf文档，title自定义
     # path('docs',include_docs_urls(title='校园二手交易平台')),
     # path('api-auth/',include('rest_framework.urls')),

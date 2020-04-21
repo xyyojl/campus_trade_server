@@ -39,6 +39,9 @@ class UserProfiles(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(blank = True)
     is_active = models.BooleanField(default = True)
     avatar = models.CharField(max_length=200)
+    email_active = models.BooleanField(default=False, verbose_name='邮箱验证状态')
+    email = models.EmailField(blank = True)
+
 
     # 这是一个作为User的标识字段，所选的字段来代表这个用户
     USERNAME_FIELD = 'username'
