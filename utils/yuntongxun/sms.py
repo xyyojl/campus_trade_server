@@ -4,16 +4,16 @@
 from utils.yuntongxun.CCPRestSDK import REST
 from django.conf import settings
 
-_accountSid = 'settings.SMS_ACCOUNTSID
+_accountSid = settings.SMS_ACCOUNTSID
 
 # 说明：主账号Token，登陆云通讯网站后，可在控制台-应用中看到开发者主账号AUTH TOKEN
-_accountToken = 'settings.SMS_ACCOUNTTOKEN
+_accountToken = settings.SMS_ACCOUNTTOKEN
 
 # 请使用管理控制台首页的APPID或自己创建应用的APPID
 _appId = settings.SMS_APPID
 
 # 说明：请求地址，生产环境配置成app.cloopen.com
-_serverIP = ettings.SMS_SERVERIP
+_serverIP = settings.SMS_SERVERIP
 # _serverIP = 'app.cloopen.com'
 
 # 说明：请求端口 ，生产环境为8883
