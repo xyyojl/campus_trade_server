@@ -34,7 +34,7 @@ class UserProfiles(AbstractBaseUser, PermissionsMixin):
                             )
     school = models.CharField(max_length=12,verbose_name="学校",help_text="学校")
     address = models.CharField(max_length=40, blank=True)
-    telephone = models.CharField(max_length=11, blank=True)
+    mobile = models.CharField(max_length=11, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     is_staff = models.BooleanField(blank = True)
     is_active = models.BooleanField(default = True)

@@ -1,7 +1,13 @@
 from django.shortcuts import render
+from rest_framework.generics import CreateAPIView
+from .serializers import UserModelSerializer
+from .models import UserProfiles as User
 
-from .models import UserProfiles
-# from .serializers import UserSerializer
+class UserAPIView(CreateAPIView):
+    serializer_class = UserModelSerializer
+    queryset = User.objects.all()
+
+
 
 # Create your views here.
 

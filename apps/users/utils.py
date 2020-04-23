@@ -8,12 +8,13 @@ def get_user_by_account(account):
     try:
         # if re.match('^1[3-9]\d{9}$', account):
         #     # 手机号
-        #     user = User.objects.get(telephone=account)
+        #     user = User.objects.get(mobile=account)
         # else:
         #     # 用户名
         #     user = User.objects.get(username=account)
 
-        user = User.objects.get(Q(telephone=account) | Q(username=account))
+        user = User.objects.get(Q(mobile=account) | Q(username=account))
+        print(user)
 
     except User.DoesNotExist:
         user = None
@@ -26,8 +27,16 @@ class UsernameMobileAuthBackend(ModelBackend):
         # 进行登录判断
         user = get_user_by_account(username)
 
+        print(2)
+        print('isinstance(user,User)')
+        print(isinstance(user,User))
+        print('user.check_password(password)')
+        print(user.check_password(password))
+        print(password)
+        print(self.user_can_authenticate(user))
         # 账号通过了还要进行密码的验证,以及判断当前站好是否是激活状态
         if isinstance(user,User) and user.check_password(password) and self.user_can_authenticate(user):
+            print(1)
             return user
 
 
