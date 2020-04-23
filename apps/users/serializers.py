@@ -87,8 +87,8 @@ class UserModelSerializer(serializers.ModelSerializer):
                 school=school
             )
 
-            # 密码加密
-            user.set_password(user.password)
+            # 密码加密 对 password 处理
+            user.set_password(password)
             user.save()
 
         except:
@@ -103,6 +103,7 @@ class UserModelSerializer(serializers.ModelSerializer):
         payload = jwt_payload_handler(user)
         user.token = jwt_encode_handler(payload)
 
+        print(user)
         return user
 
 

@@ -210,7 +210,10 @@ REST_FRAMEWORK = {
 import datetime
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    # 登陆成功自定义 的返回结构
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'users.utils.jwt_response_payload_handler',
+    # 登陆失败时自定义的返回结构
+    'JWT_RESPONSE_PAYLOAD_ERROR_HANDLER': 'users.utils.jwt_response_payload_error_handler',
 }
 
 # 告知Django使用我们自定义的认证后端
