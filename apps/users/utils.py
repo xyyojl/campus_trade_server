@@ -1,8 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from .models import UserProfiles as User
 from django.db.models import Q
-# from django.contrib.auth import authenticate
-# from django.contrib.auth.hashers import check_password
 import re
 
 def get_user_by_account(account):
@@ -28,15 +26,9 @@ class UsernameMobileAuthBackend(ModelBackend):
         # 进行登录判断
         user = get_user_by_account(username)
 
-        print('-----')
-        print(user.check_password(password))
-        print(password)
-        print('-----')
         # 目前的问题是：user.check_password(password) 的结果为 False 原因是？
-        # print(check_password(password, user.password))
         # 账号通过了还要进行密码的验证,以及判断当前站好是否是激活状态
         if isinstance(user,User) and user.check_password(password) and self.user_can_authenticate(user):
-            print('hi')
             return user
 
 

@@ -2,7 +2,13 @@ from rest_framework import serializers
 from .models import UserProfiles as User
 import re
 from django_redis import get_redis_connection
+from rest_framework.response import Response
+from django.http import JsonResponse
+from rest_framework import status
+from rest_framework import serializers
 
+
+# 注册成功后如果想让前端自动登陆，则需要返回给前端一个 token；所以以下为手动生成一个 token 返回给前端
 class UserModelSerializer(serializers.ModelSerializer):
     # 施工中 需要根据实际情况修改
     # 短信验证码的 max_length 可能会改
@@ -22,7 +28,7 @@ class UserModelSerializer(serializers.ModelSerializer):
             "mobile":{"write_only":True}
         }
 
-
+    # 重写验证方法
     def validate_mobile(self, mobile):
         # 验证格式
         result = re.match('^1[3-9]\d{9}$', mobile)
@@ -72,8 +78,12 @@ class UserModelSerializer(serializers.ModelSerializer):
 
         return attrs
 
+# CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
+
+
     def create(self, validated_data):
         """保存用户"""
+        print('hi')
         username = validated_data.get("username")
         password = validated_data.get("password")
         school = validated_data.get("school")
@@ -94,28 +104,55 @@ class UserModelSerializer(serializers.ModelSerializer):
         except:
             raise serializers.ValidationError("注册用户失败!")
 
+        return user
+
+        # 如果创建了一个对象，这将返回一个 201 Created 响应，
+        # 将该对象的序列化表示作为响应的主体。如果序列化的表示中包含名为 url的键，则响应的 Location 头将填充该值。
+
+        # 在创建帐户后立即将令牌返回给用户
         # 生成一个jwt
-        from rest_framework_jwt.settings import api_settings
+        """ from rest_framework_jwt.settings import api_settings
 
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
         jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-        payload = jwt_payload_handler(user)
-        user.token = jwt_encode_handler(payload)
-
-        print(user)
-        return user
+        payload = jwt_payload_handler(user) # user 是 User 表中生成的一条新记录
+        user.token = jwt_encode_handler(payload) # jwt_encode_handler(payload) 生成 token """
 
 
+        # 创建了一个对象，这将返回一个 201 Created 响应
+        """ print(2)
+        print(user) """
+        # return user
+        # return JsonResponse(user)
+        # return JsonResponse(user, safe=False)
 
-# 待销毁
-""" from rest_framework import serializers
-from .models import UserProfiles
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfiles
-        fields = ('id','username') """
 
-# 尝试实现注册/登录 施工中
+        # 测试
+        # register的用户对象
+        """ res_dict = {
+            'msg': 'success',
+            'status': 201
+        } """
+        # res_dict = {}
+        # res_dict = serializer.data
+
+        """ payload = jwt_payload_handler(user) # user 是 User 表中生成的一条新记录
+
+        res_dict['school'] = school
+        res_dict['mobile'] = mobile
+        res_dict['username'] = username
+        res_dict['token'] = jwt_encode_handler(payload) # jwt_encode_handler(payload) 生成 token；并赋值给 res_dict["token"] """
+
+        # user.token = jwt_encode_handler(payload) # jwt_encode_handler(payload) 生成 token；并赋值给 res_dict["token"]
+
+        # headers = self.get_success_headers(serializer.data)
+        # return JsonResponse(res_dict)
+        # return Response(res_dict, status=status.HTTP_201_CREATED)
+        """ print(user)
+        return user """
+
+
+
 
