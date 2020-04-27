@@ -1,14 +1,20 @@
 # from django.db.models import Q  # 对对象进行复杂查询，并支持&（and）,|（or），~（not）操作符
 from rest_framework.generics import ListAPIView
-from .models import Banner
-from .serializers import BannerSerializer
+from .models import Banner,BigGoodsTag, SmallGoodsTag
+from .serializers import BannerSerializer,BigTagsSerilizer, SmallTagsSerilizer
 
 class BannerInfoListAPIView(ListAPIView):
     """ 轮播图列表 """
     queryset = Banner.objects.all() # Banner 模型类
     serializer_class = BannerSerializer 
 
+class BigTagsInfoListAPIView(ListAPIView):
+    queryset = BigGoodsTag.objects.all()
+    serializer_class = BigTagsSerilizer
 
+class SmallTagsInfoListAPIView(ListAPIView):
+    queryset = SmallGoodsTag.objects.all()
+    serializer_class = SmallTagsSerilizer
 
 
 

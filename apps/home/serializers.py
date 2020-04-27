@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Banner
+from .models import Banner,BigGoodsTag,SmallGoodsTag
 
 
 
@@ -9,7 +9,19 @@ class BannerSerializer(serializers.ModelSerializer):
         model = Banner
         fields = ('id','image_url','priority','link_to')
 
+class BigTagsSerilizer(serializers.ModelSerializer):
 
+    class Meta:
+        model = BigGoodsTag
+        fields = ('id','name')
+
+class SmallTagsSerilizer(serializers.ModelSerializer):
+    # 覆盖外键字段
+    big_tag = BigTagsSerilizer()
+
+    class Meta:
+        model = SmallGoodsTag
+        fields = ('id','name','big_tag','is_delete')
 
 
 

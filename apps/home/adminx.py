@@ -23,3 +23,18 @@ from .models import Banner
 class BannerInfoModelAdmin(object):
     list_display=['image_url','priority','link_to','create_date','is_delete']
 xadmin.site.register(Banner, BannerInfoModelAdmin)
+
+# 大分类
+from .models import BigGoodsTag
+class BigGoodsTagModelAdmin(object):
+    """大类别管理类"""
+    pass
+xadmin.site.register(BigGoodsTag, BigGoodsTagModelAdmin)
+
+
+# 小分类
+from .models import SmallGoodsTag
+class SmallGoodsTagModelAdmin(object):
+    """小类别管理类"""
+    pass
+xadmin.site.register(SmallGoodsTag, SmallGoodsTagModelAdmin)
