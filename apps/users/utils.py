@@ -1,3 +1,4 @@
+
 from django.contrib.auth.backends import ModelBackend
 from .models import UserProfiles as User
 from django.db.models import Q
@@ -51,9 +52,9 @@ def jwt_response_payload_handler(token, user=None, request=None):
 
 
 def jwt_response_payload_error_handler(serializer, request = None):
+    # bug：这里应该是可以区分到是用户名错误还是密码错误，居然请求成功，状态码 200
     return {
         "msg": "用户名或者密码错误",
         "status": 400,
         "detail": serializer.errors
     }
-
